@@ -13,7 +13,7 @@ app.use(express.static('js'));
 app.use(express.static('style'));
 app.use(express.static('index'));
 
-server.listen(8124);
+server.listen(80);
 
 // Set HomePage
 app.get('/', function (req, res) {
@@ -270,4 +270,4 @@ emotional.load(function(){
   });
 });
 
-console.log('listening on 8124');
+console.log('listening on 80');
