@@ -13,7 +13,9 @@ app.use(express.static('js'));
 app.use(express.static('style'));
 app.use(express.static('index'));
 
-server.listen(80);
+server.listen((process.env.PORT || 80), function(){
+  console.log('listening on *:80');
+});
 
 // Set HomePage
 app.get('/', function (req, res) {
@@ -269,5 +271,3 @@ emotional.load(function(){
     socket.emit("connected");
   });
 });
-
-console.log('listening on 80');
