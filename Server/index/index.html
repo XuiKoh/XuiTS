@@ -1,0 +1,94 @@
+<head>
+    <title>TwitterSentiment</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>   <!-- jQuery library -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>  <!-- Latest compiled JavaScript -->
+    <script src="/socket.io/socket.io.js"></script> <!-- Socket.io scripts -->
+    <script type="text/javascript" src="/javas.js"></script>
+    <script type="text/javascript" src="/chart.js"></script>
+    
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/epoch.min.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+</head>
+<body>
+    <div class='container-fluid'>
+        <div class='content'>
+            <nav class="navbar navbar-default">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+                    <a class="navbar-brand">TwitterSentiment</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <div class="navbar-form navbar-left">
+                        <div class='input-group'>
+                            <input id='tag' type='text' class="form-control" onKeyPress='onEnter(event);' placeholder = "HashTags or Keyword"></input>
+                            <div class='input-group-btn'>
+                                <button onclick='track();' class="btn btn-default">Stream</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="navbar-form navbar-right">
+                                <button onclick='removeAll();' class="btn btn-default">Remove All Tags</button>
+                                <button onclick='clearPage();' class="btn btn-default">Clear All Tweets</button>
+                    </div>
+                </div>
+            </nav>
+            
+            <div id="TweetChart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+            
+            <div id="tracking"><div class="tracking">Streaming:</div></div>
+            <div class='counts'><p id='tweetcount' type='text'></p></div>
+            <div id="form-group">
+              Track Mean Score of Last
+              <select  id="trackNum" onchange="numChange();">
+                <option>5</option>
+                <option>10</option>
+                <option>15</option>
+                <option>20</option>
+                <option>25</option>
+              </select>
+              Tweets
+            </div>
+            <div id='avg' ></div>
+            <div class="tweets">
+                <div id="good"></div>
+                <div id="neutral"></div>
+                <div id="bad"></div>
+            </div>
+            <p>Tweet Usage</p>
+            <div><p id='tweetcountinsec' type='text'></p></div>
+            <div id="real-time-Sec" class="epoch" style="height: 200px"></div>
+            <div class="gauges">
+                <div id="real-time-cpu" class="epoch gauge-medium"></div>
+                <div id="real-time-memory" class="epoch gauge-small"></div>
+            </div>
+            <div class='labelC'>
+                <div class='cpu glabel'><b>CPU</b></div>
+                <div class='ram glabel'><b>RAM</b></div>
+            </div>
+            <p>Usages Chart</p>
+            <div id="real-time-area" class="epoch" style="height: 200px"></div>
+           
+        </div>
+        
+        <div class='footer'>
+            <h4>TwitterSentiment</h4>
+            Created by:
+            Month Yean Koh,
+            Nathaniel Jones
+        </div>
+    </div>
+    <script src="/highcharts.js"></script>
+    <script src="/exporting.js"></script>
+    <script src="/d3.min.js"></script>
+    <script src="/epoch.min.js"></script>
+</body>
