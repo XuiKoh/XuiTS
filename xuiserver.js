@@ -13,7 +13,9 @@ app.use(express.static('js'));
 app.use(express.static('style'));
 app.use(express.static('index'));
 
-server.listen(8124);
+server.listen((process.env.PORT || 80), function(){
+  console.log('listening on *:80');
+});
 
 // Set HomePage
 app.get('/', function (req, res) {
@@ -139,22 +141,22 @@ emotional.load(function(){
               			if(emotional.get(tweet.text).polarity > 0.1){				//if tweet has positve sentiment
                 			if(tweet.filter_level = 'medium'){
                 				count.good++;
-		            			msg.tweet = tweet;
-		            			msg.count = count;
+  		            			msg.tweet = tweet;
+  		            			msg.count = count;
 	                			socket.emit("good tweet", msg);
                 			} else { console.log(tweet.filter_level); }
               			} else if(emotional.get(tweet.text).polarity < -0.1){		//if tweet has negative sentiment
                 			if(tweet.filter_level = 'medium'){
                 				count.bad++;
-					            msg.tweet = tweet;
-					            msg.count = count;
+  					            msg.tweet = tweet;
+  					            msg.count = count;
 			                  	socket.emit("bad tweet", msg);
                 			}
               			} else {													//if tweet is neutral
 			                if(tweet.filter_level = 'medium'){
 			                	count.neutral++;
-					            msg.tweet = tweet;
-					            msg.count = count;
+  					            msg.tweet = tweet;
+  					            msg.count = count;
 			                	socket.emit("a tweet", msg);
 			                }
               			}
@@ -234,7 +236,7 @@ emotional.load(function(){
 
     //client untrack all tags
     socket.on("removeAll", function (){
-      	for(var i=0; i < socket.tracking.length; i++){
+      	for(var i = 0; i < socket.tracking.length; i++){
         	unTrack(socket.tracking[i]);
       	}
       	socket.tracking = [];
@@ -244,7 +246,7 @@ emotional.load(function(){
     //client disconects
     socket.on("disconnect", function(){
       	console.log('A user disconnected');
-      	for(var i=0; i < socket.tracking.length; i++){
+      	for(var i = 0; i < socket.tracking.length; i++){
         unTrack(socket.tracking[i]);
       	}
 		tweetdb.remove(socket.id, function (err) {

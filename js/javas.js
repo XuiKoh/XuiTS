@@ -68,7 +68,7 @@ socket.on('avg', function (avg){
  * returns out: formated html string for displaying tweet object
  */
 function tweets(tweet){
-	out = '<div class="tweet"> <div class="tweeter"><img src='+tweet.user.profile_image_url+'><b>'+tweet.user.name+"</b> @"+tweet.user.screen_name+'</div><div>'+tweet.text+'</div></div>';
+	out = '<div class="tweet"> <div class="tweeter"><img src=' + tweet.user.profile_image_url + '><b> ' + tweet.user.name + " </b> @" + tweet.user.screen_name + '</div><div>' + tweet.text + '</div></div>';
 	return out;
 }
 
@@ -100,7 +100,7 @@ function track(){
 	var tag = document.getElementById('tag').value;
 	var id = tag.replace(/\s/g, "");
 	id = id.replace(/#/g, "hash");
-	$('#tracking').append("<div id="+"tag"+id+" class='tag' onclick='unTrack(`"+tag+"`)'>"+tag+"</div>");
+	$('#tracking').append("<div id=" + "tag" + id + " class='tag' onclick='unTrack(`" + tag + "`)'>" + tag + "</div>");
 	emitMsj('track', tag);
     document.getElementById('tag').value = '';
 }
