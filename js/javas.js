@@ -146,6 +146,7 @@ function clearPage(){
     rgood = 0;
     rneutral = 0;
     rbad = 0;
+    tweetsnumbers = 0;
     start = 0;
     seconds = 0;
 }
