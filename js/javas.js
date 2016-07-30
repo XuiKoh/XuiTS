@@ -7,7 +7,8 @@ var socket = io(),
     rneutral = 0,
     ResultCount = [],
     tweetinsec = 0,
-    tweetsnumbers = 0;
+    tweetsnumbers = 0,
+    seconds = 0;
 
 //On recieving a good tweet
 socket.on('good tweet', function(msg){
@@ -165,7 +166,7 @@ function addCount(result) {
     rneutral = result.neutral;
     tweetsnumbers = result.tweetsnumbers;
     tweetinsec++;
-    document.getElementById('tweetcount').innerHTML = "Tweet Counts:" + tweetsnumbers;
+    document.getElementById('tweetcount').innerHTML = "Tweet Counts:" + tweetsnumbers + "\n/ Seconds : " + seconds + "\n AVG Tweet: " + (tweetsnumbers/seconds) ;
 }
 
 

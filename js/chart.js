@@ -269,7 +269,8 @@ $(function() {
     setInterval(function() {
         document.getElementById('tweetcountinsec').innerHTML = "Tweet in second:" + tweetinsec + "/s";
         chart.push(data.next());
-        tweetinsec = 0; 
+        tweetinsec = 0;
+        seconds++; 
     }, 1000);
     chart.push(data.next());
 });
