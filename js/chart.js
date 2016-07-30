@@ -271,7 +271,7 @@ $(function() {
         document.getElementById('tweetcount').innerHTML = "Tweet Counts:" + tweetsnumbers + "<br>Seconds : " + seconds + "<br>AVG Tweet: " + (tweetsnumbers/seconds) ;
         chart.push(data.next());
         tweetinsec = 0;
-        seconds++; 
+        if(start == 1) seconds++; 
     }, 1000);
     chart.push(data.next());
 });

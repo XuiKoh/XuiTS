@@ -8,7 +8,8 @@ var socket = io(),
     ResultCount = [],
     tweetinsec = 0,
     tweetsnumbers = 0,
-    seconds = 0;
+    seconds = 0,
+    start = 0;
 
 //On recieving a good tweet
 socket.on('good tweet', function(msg){
@@ -104,6 +105,7 @@ function track(){
 	$('#tracking').append("<div id=" + "tag" + id + " class='tag' onclick='unTrack(`" + tag + "`)'>" + tag + "</div>");
 	emitMsj('track', tag);
     document.getElementById('tag').value = '';
+    start = 1;
 }
 
 /*
@@ -144,6 +146,8 @@ function clearPage(){
     rgood = 0;
     rneutral = 0;
     rbad = 0;
+    start = 0;
+    seconds = 0;
 }
 
 /*
