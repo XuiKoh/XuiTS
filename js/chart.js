@@ -268,7 +268,7 @@ $(function() {
     
     setInterval(function() {
         document.getElementById('tweetcountinsec').innerHTML = "Tweet in second:" + tweetinsec + "/s";
-        document.getElementById('tweetcount').innerHTML = "Tweet Counts:" + tweetsnumbers + "\n/ Seconds : " + seconds + "\n AVG Tweet: " + (tweetsnumbers/seconds) ;
+        document.getElementById('tweetcount').innerHTML = "Tweet Counts:" + tweetsnumbers + "<br>Seconds : " + seconds + "<br>AVG Tweet: " + (tweetsnumbers/seconds) ;
         chart.push(data.next());
         tweetinsec = 0;
         seconds++; 
